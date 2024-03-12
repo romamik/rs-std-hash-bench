@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>u128_hash_bench</title>
+    <script type="module">
+        import init, { run } from './pkg/u128_hash_bench.js';
+
+        async function start() {
+            await init();
+			console.log("init done");
+            run();
+			console.log("done");
+        }
+
+        start();
+    </script>
+</head>
+<body>
+</body>
+</html>
