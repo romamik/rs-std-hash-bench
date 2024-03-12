@@ -188,7 +188,7 @@ pub fn run() {
         for (_key, value) in &data {
             sum += value;
         }
-        assert_eq!(sum, 49995000);
+        assert_eq!(sum, DATA_SIZE * (DATA_SIZE - 1) / 2);
     });
 }
 
