@@ -183,6 +183,23 @@ pub fn run() {
         }
     });
 
+    {
+        let map: HashMap<String, usize> = data.iter().map(|it| (it.0.to_string(), it.1)).collect();
+        let data: Vec<_> = data.iter().map(|it| (it.0.to_string(), it.1)).collect();
+        run_test("string standart hash, no write", || {
+            for (key, value) in &data {
+                assert_eq!(map.get(key), Some(value));
+            }
+        });
+    }
+
+    run_test("same task with just vecs", || {
+        let map: Vec<_> = data.iter().take(DATA_SIZE / 10).cloned().collect();
+        for (key, value) in &map {
+            assert_eq!(data.iter().find(|(k, _)| k == key), Some(&(*key, *value)));
+        }
+    });
+
     run_test("sum indices", || {
         let mut sum = 0;
         for (_key, value) in &data {
