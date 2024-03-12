@@ -182,6 +182,14 @@ pub fn run() {
             assert_eq!(map.get(&key.as_u128().into()), Some(value));
         }
     });
+
+    run_test("sum indices", || {
+        let mut sum = 0;
+        for (_key, value) in &data {
+            sum += value;
+        }
+        assert_eq!(sum, 49995000);
+    });
 }
 
 #[cfg(target_arch = "wasm32")]
